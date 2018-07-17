@@ -1,5 +1,6 @@
 package net.bloop.randomstuff;
 
+import net.bloop.randomstuff.Blocks.BlockRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
