@@ -1,0 +1,16 @@
+[
+{
+  "modid": "randomstuff",
+  "name": "Random Stuff",
+  "description": "Just some random stuff.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["_Bloop"],
+  "credits": "Thanks to InsomniaKitten and tterrag for helping me with pretty much everything. Thanks to Prospector for helping me with my first block and blockstate stuff.",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
