@@ -23,7 +23,6 @@ public class ItemRandomDrop extends ItemMod {
     public ItemRandomDrop()
     {
         super("itemrandomdrop");
-        setCreativeTab(RegistryEvents.RStab);
     }
 
     @Override

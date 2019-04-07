@@ -1,5 +1,6 @@
 package net.bloop.randomstuff.Items;
 
+import net.bloop.randomstuff.RegistryEvents;
 import net.minecraft.item.Item;
 
 public class ItemMod extends Item {
@@ -10,5 +11,6 @@ public class ItemMod extends Item {
         name = itemname;
         setRegistryName(itemname);
         setUnlocalizedName(itemname);
+        setCreativeTab(RegistryEvents.RStab);
     }
 }
