@@ -12,4 +12,16 @@ public class EnchantmentEgging extends Enchantment {
         setRegistryName("egging");
         setName("egging");
     }
+
+    @Override
+    public int getMaxLevel()
+    {
+        return 30;
+    }
+
+    @Override
+    public int getMinLevel()
+    {
+        return 1;
+    }
 }
