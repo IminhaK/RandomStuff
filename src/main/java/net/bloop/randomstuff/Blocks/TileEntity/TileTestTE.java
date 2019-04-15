@@ -1,37 +1,35 @@
 package net.bloop.randomstuff.Blocks.TileEntity;
 
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraftforge.items.ItemStackHandler;
 
 public class TileTestTE extends TileEntity {
 
-    private int count;
+    public ItemStackHandler items = new ItemStackHandler();
 
-    public TileTestTE(){}
+    public TileTestTE()
+    {
+    }
 
     @Override
     public void readFromNBT(NBTTagCompound nbt)
     {
         super.readFromNBT(nbt);
-        count = nbt.getInteger("count");
+        items.deserializeNBT(nbt.getCompoundTag("items"));
     }
 
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound nbt)
     {
         super.writeToNBT(nbt);
-        nbt.setInteger("count", count);
+        nbt.setTag("items", items.serializeNBT());
         return nbt;
     }
 
-    public int getCount()
+    public ItemStack getItem(int slot)
     {
-        return count;
-    }
-
-    public void increaseCount()
-    {
-        count++;
-        markDirty();
+        return items.getStackInSlot(slot);
     }
 }
