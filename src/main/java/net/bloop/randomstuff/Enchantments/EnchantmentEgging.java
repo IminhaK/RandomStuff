@@ -16,12 +16,6 @@ public class EnchantmentEgging extends Enchantment {
     @Override
     public int getMaxLevel()
     {
-        return 30;
-    }
-
-    @Override
-    public int getMinLevel()
-    {
         return 1;
     }
 }
