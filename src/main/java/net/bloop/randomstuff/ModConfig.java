@@ -13,6 +13,12 @@ public class ModConfig {
     @Config.Comment("Can weather occur?")
     public static boolean weatherEnabled = true;
 
+    @Config.Comment("Does TnT explode when picked up?")
+    public static boolean pickupExplosions = true;
+
+    @Config.Comment("Do fireworks spawn whenever a block is broken?")
+    public static boolean fireworkBreaking = true;
+
     @Mod.EventBusSubscriber(modid = RandomStuff.MODID)
     private static class EventHandler {
         @SubscribeEvent

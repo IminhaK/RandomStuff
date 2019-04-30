@@ -23,27 +23,29 @@ public class GameEvents {
     @SubscribeEvent
     public static void breakBlock(BlockEvent.BreakEvent event)
     {
-        BlockPos pos = event.getPos();
-        World world = event.getPlayer().getEntityWorld();
-        ItemStack stack = new ItemStack(Items.FIREWORKS);
-        stack.setTagCompound(new NBTTagCompound());
+        if(ModConfig.fireworkBreaking) {
+            BlockPos pos = event.getPos();
+            World world = event.getPlayer().getEntityWorld();
+            ItemStack stack = new ItemStack(Items.FIREWORKS);
+            stack.setTagCompound(new NBTTagCompound());
 
-        NBTTagCompound explosion = new NBTTagCompound();
-        int[] color = new int[1];
-        color[0] = event.getState().getBlock().getMapColor(event.getState(), world, pos).colorValue;
-        explosion.setIntArray("Colors", color);
-        explosion.setByte("Type", (byte)1);
+            NBTTagCompound explosion = new NBTTagCompound();
+            int[] color = new int[1];
+            color[0] = event.getState().getBlock().getMapColor(event.getState(), world, pos).colorValue;
+            explosion.setIntArray("Colors", color);
+            explosion.setByte("Type", (byte) 1);
 
-        NBTTagList explosions = new NBTTagList();
-        explosions.appendTag(explosion);
+            NBTTagList explosions = new NBTTagList();
+            explosions.appendTag(explosion);
 
-        NBTTagCompound fireworkTag = new NBTTagCompound();
-        fireworkTag.setTag("Explosions", explosions);
-        fireworkTag.setByte("Flight", (byte)0);
-        fireworkTag.setByte("LifeTime", (byte) 1);
-        stack.setTagInfo("Fireworks", fireworkTag);
+            NBTTagCompound fireworkTag = new NBTTagCompound();
+            fireworkTag.setTag("Explosions", explosions);
+            fireworkTag.setByte("Flight", (byte) 0);
+            fireworkTag.setByte("LifeTime", (byte) 1);
+            stack.setTagInfo("Fireworks", fireworkTag);
 
-        world.spawnEntity(new EntityFireworkRocket(world, pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5, stack));
+            world.spawnEntity(new EntityFireworkRocket(world, pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5, stack));
+        }
     }
 
     @SubscribeEvent
@@ -51,7 +53,7 @@ public class GameEvents {
     {
         World world = event.getItem().getEntityWorld();
         EntityItem item = event.getItem();
-        if(item.getItem().getItem() == Item.getItemFromBlock(Blocks.TNT))
+        if(item.getItem().getItem() == Item.getItemFromBlock(Blocks.TNT) && ModConfig.pickupExplosions)
         {
             EntityTNTPrimed tnt = new EntityTNTPrimed(world, item.posX, item.posY, item.posZ, event.getEntityLiving());
             tnt.setFuse(0);
