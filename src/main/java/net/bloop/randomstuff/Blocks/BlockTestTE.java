@@ -57,6 +57,15 @@ public class BlockTestTE extends BlockTEMod<TileTestTE> {
         }
     }
 
+    public void breakBlock(World worldIn, BlockPos pos, IBlockState state)
+    {
+        if(!worldIn.isRemote)
+        {
+            TileTestTE tile = getTileEntity(worldIn, pos);
+            spawnAsEntity(worldIn, pos, tile.items.extractItem(0,64,false));
+        }
+    }
+
     @Override
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)

@@ -1,6 +1,5 @@
 package net.bloop.randomstuff.Blocks.TileEntity;
 
-import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.items.ItemStackHandler;
@@ -26,10 +25,5 @@ public class TileTestTE extends TileEntity {
         super.writeToNBT(nbt);
         nbt.setTag("items", items.serializeNBT());
         return nbt;
-    }
-
-    public ItemStack getItem(int slot)
-    {
-        return items.getStackInSlot(slot);
     }
 }
