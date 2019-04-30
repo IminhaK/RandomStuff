@@ -11,6 +11,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.world.storage.WorldInfo;
 import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -42,7 +43,7 @@ public class GameEvents {
         fireworkTag.setByte("LifeTime", (byte) 1);
         stack.setTagInfo("Fireworks", fireworkTag);
 
-        world.spawnEntity(new EntityFireworkRocket(world, pos.getX(), pos.getY(), pos.getZ(), stack));
+        world.spawnEntity(new EntityFireworkRocket(world, pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5, stack));
     }
 
     @SubscribeEvent
@@ -56,6 +57,20 @@ public class GameEvents {
             tnt.setFuse(0);
 
             world.spawnEntity(tnt);
+        }
+    }
+
+    @SubscribeEvent
+    public static void onWeather(BlockEvent event)
+    {
+        World world = event.getWorld();
+        WorldInfo worldInfo = world.getWorldInfo();
+        if(!ModConfig.weatherEnabled && !world.isRemote && (worldInfo.isRaining() || worldInfo.isThundering()))
+        {
+            worldInfo.setRainTime(0);
+            worldInfo.setThunderTime(0);
+            worldInfo.setRaining(false);
+            worldInfo.setThundering(false);
         }
     }
 }
