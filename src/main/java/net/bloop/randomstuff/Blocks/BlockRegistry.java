@@ -22,6 +22,8 @@ public class BlockRegistry {
 
     public static Block blockTest = new BlockTest();
     public static Block blockTestTE = new BlockTestTE();
+    public static Block blockTall = new BlockTall();
+    public static Block blockTallTop = new BlockTallTop();
 
     @SubscribeEvent
     static void registerBlocks(RegistryEvent.Register<Block> event)
@@ -31,6 +33,8 @@ public class BlockRegistry {
         r.register(blockTest);
         r.register(blockTestTE);
         GameRegistry.registerTileEntity(TileTestTE.class, new ResourceLocation(modid + ":tiletestte"));
+        r.register(blockTall);
+        r.register(blockTallTop);
     }
 
     @SubscribeEvent
@@ -40,6 +44,8 @@ public class BlockRegistry {
 
         r.register(new ItemBlock(blockTest).setRegistryName("blocktest"));
         r.register(new ItemBlock(blockTestTE).setRegistryName("blocktestte"));
+        r.register(new ItemBlock(blockTall).setRegistryName("blocktall"));
+        r.register(new ItemBlock(blockTallTop).setRegistryName("blocktalltop"));
     }
 
     @SubscribeEvent
@@ -47,5 +53,7 @@ public class BlockRegistry {
     {
         ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(blockTest), 0, new ModelResourceLocation(modid + ":blocktest"));
         ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(blockTestTE), 0, new ModelResourceLocation(modid + ":blocktestte"));
+        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(blockTall), 0, new ModelResourceLocation(modid + ":blocktall"));
+        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(blockTallTop), 0, new ModelResourceLocation(modid + ":blocktalltop"));
     }
 }

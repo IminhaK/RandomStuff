@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_column",
+  "textures": {
+    "end": "randomstuff:blocks/blocktall",
+    "side": "randomstuff:blocks/blocktall_side"
+  }
+}
