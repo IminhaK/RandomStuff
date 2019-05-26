@@ -1,5 +1,6 @@
 package net.bloop.randomstuff.Enchantments;
 
+import net.bloop.randomstuff.ModConfig;
 import net.bloop.randomstuff.RandomStuff;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -40,7 +41,7 @@ public class ModEnchantments {
         Entity victim = event.getEntityLiving();
         World world = victim.world;
 
-        if(attacker instanceof EntityPlayer && (new Random().nextInt(101) > 90) && !world.isRemote)
+        if(attacker instanceof EntityPlayer && (new Random().nextInt(101) <= ModConfig.eggingChance) && !world.isRemote)
         {
             EntityPlayer player = (EntityPlayer)event.getSource().getTrueSource();
             ItemStack weapon = player.getHeldItemMainhand();
