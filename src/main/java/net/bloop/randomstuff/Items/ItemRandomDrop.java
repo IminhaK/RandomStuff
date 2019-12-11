@@ -45,7 +45,7 @@ public class ItemRandomDrop extends ItemMod {
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
     {
         tooltip.add("Grants a random item.");
-        tooltip.add("§8§oHas potential to crash the game,");
+        tooltip.add("§8§oHas potential to crash the game if an invalid item is drawn.");
         tooltip.add("§8§oYou have been warned.");
     }
 }
